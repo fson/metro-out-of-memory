@@ -1,11 +1,33 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { AppLoading, Font } from 'expo';
+import GoogleFonts from './GoogleFonts';
 
 export default class App extends React.Component {
+  state = {
+    fontLoaded: false,
+  };
+
+  _loadAsync = async () => {
+    await Font.loadAsync({ ubuntu: GoogleFonts.UbuntuCondensed.Regular });
+  };
+
   render() {
+    if (!this.state.fontLoaded) {
+      return (
+        <AppLoading
+          startAsync={this._loadAsync}
+          onError={console.error}
+          onFinish={() => this.setState({ fontLoaded: true })}
+        />
+      );
+    }
+
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Text style={{ fontFamily: 'ubuntu' }}>
+          Open up App.js to start working on your app!
+        </Text>
       </View>
     );
   }

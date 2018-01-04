@@ -1,7 +1,11 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
+  "scripts": {
+    "start": "exp start --offline"
+  },
   "dependencies": {
+    "exp": "^47.3.13",
     "expo": "^24.0.0",
     "react": "16.0.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz"
